@@ -25,22 +25,42 @@
 require 'rolldice'
 
 describe Dice do
-  it 'output of dice is 1' do
-    die = Dice.new
-    die.roll
-    expect(die.roll).to eq 1
-  end
+  # it 'output of dice is 1' do
+  #   die = Dice.new
+  #   die.roll
+  #   expect(die.roll).to eq 1
+  # end
 
   it 'output of dice is between 1 - 6' do
     die = Dice.new
-    die.roll
-    expect(die.roll).to be_between(1, 6)
+    dices = die.roll 
+    expect(dices[0]).to be_between(1, 6)
   end
 
-  # it 'Roll 2 dice' do
-  #   die = Dice.new
-  #   die.roll(2)
-  #   expect(die.roll(2)).to be_between(1, 6)
-  # end
+  it 'check dice rolled are random outputs' do
+    die = Dice.new
+    dices = die.roll(2)
+    expect(dices[0]).not_to eq(dices[1])
+  end
+
+  it 'Roll 2 dice' do
+    die = Dice.new
+    dices = die.roll(2)
+    expect(dices.length).to eq(2) # expecting [1, 3, 4, 1, 5] type of output
+    expect(dices[0]).to be_between(1, 6)
+    expect(dices[1]).to be_between(1, 6)
+  end
+
+  it 'Roll 5 dice' do
+    die = Dice.new
+    dices = die.roll(5)
+    expect(dices.length).to eq(5) # expecting [1, 3, 4, 1, 5] type of output
+    expect(dices[0]).to be_between(1, 6)
+    expect(dices[1]).to be_between(1, 6)
+    expect(dices[2]).to be_between(1, 6)
+    expect(dices[3]).to be_between(1, 6)
+    expect(dices[4]).to be_between(1, 6)
+
+  end
 
 end
