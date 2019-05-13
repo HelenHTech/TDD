@@ -24,24 +24,23 @@
 
 require 'rolldice'
 
-describe 'rolling_dice' do
-  it 'Board game player be able to roll dice' do
-    expect(fizzbuzz("roll of dice")).to eq 'roll dice'
+describe Dice do
+  it 'output of dice is 1' do
+    die = Dice.new
+    die.roll
+    expect(die.roll).to eq 1
   end
 
-  it 'Board game player to Roll dice give number between one to six' do
-    expect(fizzbuzz("roll of dice")).to eq 'rolled dice'
+  it 'output of dice is between 1 - 6' do
+    die = Dice.new
+    die.roll
+    expect(die.roll).to be_between(1, 6)
   end
 
-  it 'Random given output of dice' do
-    expect(fizzbuzz(15)).to eq 'random output of dice'
-  end
+  # it 'Roll 2 dice' do
+  #   die = Dice.new
+  #   die.roll(2)
+  #   expect(die.roll(2)).to be_between(1, 6)
+  # end
 
-  it 'Roll x numbers if dice at the same time' do
-    expect(fizzbuzz(14)).to eq number
-  end 
-
-  it 'Print result and sum of all rolled dice' do
-    expect(fizzbuzz(14)).to eq number
-  end 
 end
