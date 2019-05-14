@@ -31,6 +31,9 @@ describe Dice do
   #   expect(die.roll).to eq 1
   # end
 
+  # let(:dice_roll) { rand(1..6) }
+  # expect(result >= 1 && result <= 6) .to eq(true)
+
   it 'output of dice is between 1 - 6' do
     die = Dice.new
     dices = die.roll 
@@ -40,7 +43,9 @@ describe Dice do
   it 'check dice rolled are random outputs' do
     die = Dice.new
     dices = die.roll(2)
-    expect(dices[0]).not_to eq(dices[1])
+    expect(dices.length).to eq(2) # expecting [1, 3, 4, 1, 5] type of output
+    expect(dices[0]).to be_between(1, 6)
+    expect(dices[1]).to be_between(1, 6)
   end
 
   it 'Roll 2 dice' do
